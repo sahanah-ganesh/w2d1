@@ -7,7 +7,7 @@ function getAndPrintHTML () {
     path: '/http-examples/step2.html'
   };
 
-  var output = [];
+  var output;
 
   https.get(requestOptions, function (response) {
 
@@ -15,9 +15,9 @@ function getAndPrintHTML () {
 
     response.on('data', function (data) {
 
-      output.push(data);
+      output += data, '\n';
 
-      console.log('Chunks received:', data, '\n');
+      console.log('Chunks received:', output, '\n');
     });
 
     response.on('end', function() {
